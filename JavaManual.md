@@ -405,15 +405,68 @@ public class example{
 ```
 ### interfaces
 
-TBD David
+Interfaces are reference types, like classes.  Interfaces cannot be instantiated.  They can only be implemented by classes or extended by other interfaces.  Interfaces define which behaviors happen.  Defining an interface is similar to creating a new class.  Here is an example of a defined interfaces:
+
+```public interface OperateCar {
+
+   // constant declarations, if any
+
+   // method signatures
+
+   // An enum with values RIGHT, LEFT
+   int turn(Direction direction,
+            double radius,
+            double startSpeed,
+            double endSpeed);
+   int changeLanes(Direction direction,
+                   double startSpeed,
+                   double endSpeed);
+   int signalTurn(Direction direction,
+                  boolean signalOn);
+   int getRadarFront(double distanceToCar,
+                     double speedOfCar);
+   int getRadarRear(double distanceToCar,
+                    double speedOfCar);
+         ......
+   // more method signatures
+}
+```
+
+To use an interface, you must write a class that implements the interface.  This provides a method body for each of the methods declared in the interface.  Here is an example:
+
+```public class OperateBMW760i implements OperateCar {
+
+    // the OperateCar method signatures, with implementation --
+    // for example:
+    int signalTurn(Direction direction, boolean signalOn) {
+       // code to turn BMW's LEFT turn indicator lights on
+       // code to turn BMW's LEFT turn indicator lights off
+       // code to turn BMW's RIGHT turn indicator lights on
+       // code to turn BMW's RIGHT turn indicator lights off
+    }
+
+    // other members, as needed -- for example, helper classes not
+    // visible to clients of the interface
+}
+```
+
+from https://docs.oracle.com/javase/tutorial/java/IandI/createinterface.html.
 
 ### casting
 
-TBD David
+The type of a given object be changed to a different type.  This is implemented by casting the variable.  However, an object cannot be cast to any type.  There are two types of casting--downcasting and upcasting.  Downcasting refers to the process of taking an object and casting it into a more specific object.  Conversely, upcasting is the process of changing the type of an object from ony type to a more generic type.
 
 ### instanceof operator
 
-TBD David
+The instanceof operator is used to test whether the object is an instance of the specified type.  This operator compares the instance with the type.  It returns a true or false value.  Here is a simple example of instance operator where it tests the current class:
+
+```class Simple1{  
+ public static void main(String args[]){  
+ Simple1 s=new Simple1();  
+ System.out.println(s instanceof Simple1);//this will output to true  
+ }  
+}
+```
 
 ### arrays
 
