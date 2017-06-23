@@ -580,31 +580,109 @@ The instanceof operator is used to test whether the object is an instance of the
 
 ### arrays
 
-TBD Nick
+ An array stores a fixed-size sequential collection of elements of the same type. An array is used to store a collection of data, but it is often more useful to think of an array as a collection of variables of the same type.
+
+ You can create an array using the following syntax:
+      dataType[] arrayRefVar = new dataType[arraySize];
+  Or when you create it with the variable already defined:
+      dataType[] arrayRefVar = {value0, value1, ..., valuek};
+
+  The challenge with an array is you must know the size of the array when creating it.  If you are unsure how big it will be consider using an array list.  
 
 ### the uses of . [] {} ;
 
-  TBD Nick
+  . accessing/calling methods
+  . accessing/assigning properties of objects
+
+  [] creating arrays i.e.  var my ar= [1,2,3]
+  [] access/assign to indexes of arrays ar[0]
+
+  {} bodies of functions,loops, if/else...
+  {} compound statements
+
+  ; end of statement without {}
+  ; separators between condition pre-post condition in for loops
+
+  () surrounds condition
+  () calling a function and methods (surrounds arguments)
+  () control order of operations (2+3)/2
+  () around function parameters in function statements
 
 ### access modifiers (public, private, protected)
 
-TBD Nick
+Access modifiers are used to set access levels for classes, variables, methods, and constructors. The four access levels are −
+
+  Visible to the package, the default. No modifiers are needed.
+  Visible to the class only (private).
+  Visible to the world (public).
+  Visible to the package and all subclasses (protected).
 
 ### exceptions
 
-TBD Nick
+  Broadly speaking, there are three different situations that cause exceptions to be thrown:
+
+  Exceptions due to programming errors: In this category, exceptions are generated due to programming errors (e.g., NullPointerException and IllegalArgumentException). The client code usually cannot do anything about programming errors.
+
+  Exceptions due to client code errors: Client code attempts something not allowed by the API, and thereby violates its contract. The client can take some alternative course of action, if there is useful information provided in the exception. For example: an exception is thrown while parsing an XML document that is not well-formed. The exception contains useful information about the location in the XML document that causes the problem. The client can use this information to take recovery steps.
+
+  Exceptions due to resource failures: Exceptions that get generated when resources fail. For example: the system runs out of memory or a network connection fails. The client's response to resource failures is context-driven. The client can retry the operation after some time or just log the resource failure and bring the application to a halt.
+
+  Types of Exceptions in Java
+
+  Java defines two kinds of exceptions:
+
+  Checked exceptions: Exceptions that inherit from the Exception class are checked exceptions. Client code has to handle the checked exceptions thrown by the API, either in a catch clause or by forwarding it outward with the throws clause.
+
+  Unchecked exceptions: RuntimeException also extends from Exception. However, all of the exceptions that inherit from RuntimeException get special treatment. There is no requirement for the client code to deal with them, and hence they are called unchecked exceptions.
 
 ### generics
 
-TBD Nick
+  Java Generic methods and generic classes enable programmers to specify, with a single method declaration, a set of related methods, or with a single class declaration, a set of related types, respectively.
+
+  You can write a single generic method declaration that can be called with arguments of different types. Based on the types of the arguments passed to the generic method, the compiler handles each method call appropriately. Following are the rules to define 
+
+  Generic Methods −
+
+  All generic method declarations have a type parameter section delimited by angle brackets (< and >) that precedes the method's return type ( < E > in the next example).
+
+  Each type parameter section contains one or more type parameters separated by commas. A type parameter, also known as a type variable, is an identifier that specifies a generic type name.
+
+  The type parameters can be used to declare the return type and act as placeholders for the types of the arguments passed to the generic method, which are known as actual type arguments.
+
+  A generic method's body is declared like that of any other method. Note that type parameters can represent only reference types, not primitive types (like int, double and char).
 
 ### abstract classes, abstract methods
 
-TBD Nick
+  An abstract class is a class that is declared abstract—it may or may not include abstract methods. Abstract classes cannot be instantiated, but they can be subclassed.
+
+  An abstract method is a method that is declared without an implementation (without braces, and followed by a semicolon), like this:
+
+  abstract void moveTo(double deltaX, double deltaY);
+  If a class includes abstract methods, then the class itself must be declared abstract, as in:
+
+      public abstract class GraphicObject {
+        // declare fields
+        // declare nonabstract methods
+        abtract void draw();
+      }
+When an abstract class is subclassed, the subclass usually provides implementations for all of the abstract methods in its parent class. However, if it does not, then the subclass must also be declared abstract.
 
 ### enums
 
-TBD Nick
+Enums are lists of constants. When you need a predefined list of values which do represent some kind of numeric or textual data, you should use an enum. For instance, in a chess game you could represent the different types of pieces as an enum:
+
+      enum ChessPiece {
+        PAWN,
+        ROOK,
+        KNIGHT,
+        BISHOP,
+        QUEEN,
+        KING;
+      }
+
+Enum constants are implicitly static and final and can not be changed once created.
+The semicolon at the end of an enum declaration is optional.
+
 
 ### anonymous inner classes, lambdas
 
