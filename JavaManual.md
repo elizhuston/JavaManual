@@ -42,6 +42,7 @@ ternary	? :
 
 ### variables
 Variable names are also called fields in Java.
+
 **Naming**
 
 Variable names are case-sensitive. A variable's name can be any legal identifier — an unlimited-length sequence of Unicode letters and digits, beginning with a letter, the dollar sign "$", or the underscore character "_".
@@ -607,8 +608,111 @@ TBD Nick
 
 ### anonymous inner classes, lambdas
 
-TBD Elizabeth
+**Inner Classes**
+
+As with instance methods and variables, an inner class is associated with an instance of its enclosing class and has direct access to that object's methods and fields. Also, because an inner class is associated with an instance, it cannot define any static members itself.
+
+Objects that are instances of an inner class exist within an instance of the outer class. Consider the following classes:
+
+```
+class OuterClass {
+    ...
+    class InnerClass {
+        ...
+    }
+}
+```
+
+An instance of InnerClass can exist only within an instance of OuterClass and has direct access to the methods and fields of its enclosing instance.
+
+To instantiate an inner class, you must first instantiate the outer class. Then, create the inner object within the outer object with this syntax:
+
+```
+OuterClass.InnerClass innerObject = outerObject.new InnerClass();
+```
+
+There are two special kinds of inner classes: local classes and anonymous classes.
+
+**Anonymous Inner Class**
+Anonymous classes enable you to make your code more concise. They enable you to declare and instantiate a class at the same time. They are like local classes except that they do not have a name. Use them if you need to use a local class only once.
+
+An inner class declared without a class name is known as an anonymous inner class. In the case of anonymous inner classes, we declare and instantiate them at the same time.
+
+An anonymous class is an expression. The syntax of an anonymous class expression is like the invocation of a constructor, except that there is a class definition contained in a block of code.
+
+
+The following program shows how to override the method of a class using anonymous inner class.
+
+```
+
+abstract class AnonymousInner {
+   public abstract void mymethod();
+}
+
+public class Outer_class {
+
+   public static void main(String args[]) {
+      AnonymousInner inner = new AnonymousInner() {
+         public void mymethod() {
+            System.out.println("This is an example of anonymous inner class");
+         }
+      };
+      inner.mymethod();
+   }
+}
+```
+
+**Lambda Expressions**
+
+One issue with anonymous classes is that if the implementation of your anonymous class is very simple, such as an interface that contains only one method, then the syntax of anonymous classes may seem unwieldy and unclear. In these cases, you're usually trying to pass functionality as an argument to another method, such as what action should be taken when someone clicks a button. Lambda expressions enable you to do this, to treat functionality as method argument, or code as data.
+
+The previous section, Anonymous Classes, shows you how to implement a base class without giving it a name. Although this is often more concise than a named class, for classes with only one method, even an anonymous class seems a bit excessive and cumbersome. Lambda expressions let you express instances of single-method classes more compactly.
+
+**Syntax of Lambda Expressions**
+
+A lambda expression consists of the following:
+
+**A comma-separated list of formal parameters enclosed in parentheses. **
+
+The CheckPerson.test method example below, contains one parameter, p, which represents an instance of the Person class.
+
+Note: You can omit the data type of the parameters in a lambda expression. In addition, you can omit the parentheses if there is only one parameter.
+
+p -> p.getGender() == Person.Sex.MALE
+    && p.getAge() >= 18
+    && p.getAge() <= 25
+
+**The arrow token, ->**
+
+**A body, which consists of a single expression or a statement block.** This example uses the following expression:
+
+p.getGender() == Person.Sex.MALE
+    && p.getAge() >= 18
+    && p.getAge() <= 25
+
+If you specify a single expression, then the Java runtime evaluates the expression and then returns its value. Alternatively, you can use a return statement:
+
+p -> {
+    return p.getGender() == Person.Sex.MALE
+        && p.getAge() >= 18
+        && p.getAge() <= 25;
+}
+
+A return statement is not an expression; in a lambda expression, you must enclose statements in braces ({}). However, you do not have to enclose a void method invocation in braces. For example, the following is a valid lambda expression:
+
+email -> System.out.println(email)
+Note that a lambda expression looks a lot like a method declaration; **you can consider lambda expressions as anonymous methods—methods without a name.**
 
 ### important classes of the standard library
 
-TBD Elizabeth
+**Object** - Object is the root of the class hierarchy.
+**String** - The String class represents character strings.
+**Integer** - The Integer class wraps a value of the primitive type int in an object. and provides the parseInt method useful for parsing strings to Integers.
+
+**Runtime**  -Every Java application has a single instance of class Runtime that allows the application to interface with the environment in which the application is running.
+
+**System** - contains several useful fields and methods including System.out.println
+
+**Throwable**  - the superclass of all errors and exceptions in the Java language.
+
+**Math** - contains methods for performing basic numeric operations such as the elementary exponential, logarithm, square root, and trigonometric functions.
